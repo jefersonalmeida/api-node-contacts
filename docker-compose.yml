@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    container_name: contacts-db
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - host
+    volumes:
+      - .docker/postgres/data:/var/lib/postgresql/data
+  test-db:
+    image: postgres
+    container_name: contacts-test-db
+    restart: always
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - host
+networks:
+  host:
