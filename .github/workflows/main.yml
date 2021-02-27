@@ -1,0 +1,36 @@
+name: CI-CD
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 10.x, 12.x, 14.x, 15.x ]
+    steps:
+      - name: Checkout source code
+      - uses: actions/checkout@v2
+
+      - name: Install Packages
+        run: npm install
+
+      - name: Install Packages
+        run: npm run build
+
+      - name: Prepare folder
+        run: zip application.zip -r ./dist/*
+
+      - name: Deploy to Elastic Beanstalk
+        uses: einaregilsson/beanstalk-deploy@v14
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: ${{ secrets.APPLICATION_NAME }}
+          environment_name: api-node-contacts
+          version_label: ${{ github.sha }}
+          region: ${{ secrets.AWS_DEFAULT_REGION }}
+          deployment_package: application.zip
