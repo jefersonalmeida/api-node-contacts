@@ -19,9 +19,9 @@ atualizar, obter e excluir tanto as pessoas quanto os contatos.
 
 ### API - Links
 
-- [DOCS - Backend](http://api-node-contacts.sa-east-1.elasticbeanstalk.com/api)
-- [DEMO - Frontend](https://bravi.com.br)
-- [Repositório - Frontend](https://bravi.com.br)
+- [DOCS | Backend](http://api-node-contacts.sa-east-1.elasticbeanstalk.com/api)
+- [DEMO | Frontend](http://d3vkt9np6wc9rn.cloudfront.net/)
+- [Repositório | Frontend](https://github.com/jefersonalmeida/app-contacts)
 
 ### Tecnologia
 - Javascript
