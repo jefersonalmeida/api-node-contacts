@@ -8,9 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 10.x, 12.x, 14.x, 15.x ]
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
@@ -18,11 +15,11 @@ jobs:
       - name: Install Packages
         run: npm install
 
-      - name: Install Packages
+      - name: Build application to production
         run: npm run build
 
       - name: Prepare folder
-        run: zip application.zip -r ./dist/*
+        run: cd dist && zip ../application.zip -r * && cd ..
 
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v14
