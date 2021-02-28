@@ -28,7 +28,7 @@ atualizar, obter e excluir tanto as pessoas quanto os contatos.
 - Nest.js
 - PostgreSQL
 - GitHub
-- AWS
+- AWS - Elastic Beanstalk | RDS | S3
 
 ## Instalação
 
